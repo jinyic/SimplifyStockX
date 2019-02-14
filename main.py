@@ -1,10 +1,14 @@
 import requests
 import time
 from datetime import datetime
+from json import load
+from os import path
 import Product
 
-# input discord webhook url
-discord_webhook_url = ''
+with open(path.join(path.dirname(__file__), 'config.json')) as f:
+    config = load(f)
+    discord_webhook_url = config["webhook"]
+
 # check time (in seconds)
 monitor_check = 900
 
@@ -28,7 +32,7 @@ def main():
     # create objects each with a product put in and add to list
     objects = [Product.Product(products[index])
                for index, product in enumerate(products)]
-    print("Starting monitor")
+    print("Monitor Started")
     while True:
         monitor_loop(objects)
         time.sleep(monitor_check)
