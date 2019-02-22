@@ -3,7 +3,7 @@ import time
 from datetime import datetime
 from json import load
 from os import path
-import Product
+import product
 
 with open(path.join(path.dirname(__file__), 'config.json')) as f:
     config = load(f)
@@ -14,11 +14,11 @@ monitor_check = 900
 
 
 def main():
-    products = []
+    searches = []
     collect_products = True
     while collect_products:
         product_name = str(input("Product name: "))
-        products.append(product_name)
+        searches.append(product_name)
         while True:
             res = input("Add more products to monitor? (Y/N) ")
             if res.lower() == 'y':
@@ -30,8 +30,8 @@ def main():
                 print("Please enter a valid response.")
 
     # create objects each with a product put in and add to list
-    objects = [Product.Product(products[index])
-               for index, product in enumerate(products)]
+    objects = [product.Product(search) for search in searches]
+
     print("Monitor Started")
     while True:
         monitor_loop(objects)
