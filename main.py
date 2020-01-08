@@ -5,12 +5,12 @@ from json import load
 from os import path
 import product
 
-with open(path.join(path.dirname(__file__), 'config.json')) as f:
+with open(path.join(path.dirname(__file__), "config.json")) as f:
     config = load(f)
     discord_webhook_url = config["webhook"]
 
-# check time (in seconds)
-monitor_check = 900
+    # check delay time (in seconds)
+    monitor_check = int(config["delay"])
 
 
 def main():
@@ -21,9 +21,9 @@ def main():
         searches.append(product_name)
         while True:
             res = input("Add more products to monitor? (Y/N) ")
-            if res.lower() == 'y':
+            if res.lower() == "y":
                 break
-            elif res.lower() == 'n':
+            elif res.lower() == "n":
                 collect_products = False
                 break
             else:
@@ -56,7 +56,7 @@ def monitor_loop(objects):
 
 def discord_hook(product_name, product_url, thumbnail_url, retail, size, last_sale, last_sale_size, lowest_ask, lowest_ask_size, highest_bid, highest_bid_size):
     headers = {
-        'Content-type': 'application/json'
+        "Content-type": "application/json"
     }
 
     time = str(datetime.utcnow())
@@ -113,6 +113,6 @@ def discord_hook(product_name, product_url, thumbnail_url, retail, size, last_sa
         return 0
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     print("StockX Monitor by Jin Yi")
     main()
