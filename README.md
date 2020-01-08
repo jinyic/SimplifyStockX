@@ -1,6 +1,5 @@
-# simplestockx
-Basic Discord monitor for StockX
+# Simplify StockX
+A basic command line tool for Discord to monitor StockX information.
 
-Set the discord webhook url in config.json. Guide [here](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
+Set the discord webhook url in config.json. More info [here](https://support.discordapp.com/hc/en-us/articles/228383668-Intro-to-Webhooks).
 
-Input settings using command line.
