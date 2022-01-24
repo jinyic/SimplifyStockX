@@ -13,4 +13,7 @@ Configure the config.json file with your settings.
 
 Follow the prompts to set up the monitor.  
 Enter product names to seach for them to add.  
-Set the size (currently broken) and confirm settings.
+Set the size and confirm settings.
+
+### Update (2022)
+StockX's API was changed and parts of the monitor (grabbing sizes) no longer work.
